@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Waiting Room - Clinic Queue</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body data-screen="waiting">
+    <header class="patient-header">
+      <a href="/" class="brand">Clinic Queue</a>
+      <div class="live-pill"><span></span> Updates live</div>
+    </header>
+
+    <main class="waiting-room">
+      <section class="current-stage">
+        <p class="eyebrow">Doctor is seeing</p>
+        <div class="giant-token" id="current-token">--</div>
+        <h1 id="current-name">Clinic has not started calling tokens</h1>
+      </section>
+
+      <section class="patient-search">
+        <label for="token-search">Your token number</label>
+        <div class="search-row">
+          <input id="token-search" inputmode="numeric" placeholder="e.g. 12" />
+          <button id="clear-search" class="ghost-button" type="button">Clear</button>
+        </div>
+        <div id="my-status" class="my-status">Enter your token to see tokens ahead and wait time.</div>
+      </section>
+
+      <section class="queue-strip">
+        <div class="strip-header">
+          <p class="eyebrow">Next tokens</p>
+          <strong><span id="queue-count">0</span> waiting</strong>
+        </div>
+        <ol id="queue-list" class="ticket-strip"></ol>
+      </section>
+    </main>
+  </body>
+</html>

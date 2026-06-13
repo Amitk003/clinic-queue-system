@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Receptionist - Clinic Queue</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body data-screen="reception">
+    <header class="topbar">
+      <a href="/" class="brand">Clinic Queue</a>
+      <div class="live-pill"><span></span> Live</div>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel add-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Under 10 seconds</p>
+            <h1>Add patient</h1>
+          </div>
+          <kbd>Enter</kbd>
+        </div>
+
+        <form id="patient-form" class="patient-form">
+          <label>
+            Patient name
+            <input id="name" name="name" autocomplete="name" placeholder="e.g. Ravi Kumar" required autofocus />
+          </label>
+          <label>
+            Phone
+            <input id="phone" name="phone" inputmode="tel" placeholder="Optional" />
+          </label>
+          <label>
+            Visit reason
+            <input id="concern" name="concern" placeholder="Fever, follow-up, BP check..." />
+          </label>
+          <button class="primary-action" type="submit">Issue token</button>
+        </form>
+        <p id="toast" class="toast" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel now-panel">
+        <p class="eyebrow">Now consulting</p>
+        <div class="token-display" id="current-token">--</div>
+        <h2 id="current-name">No patient called yet</h2>
+        <button id="call-next" class="call-button" type="button">Call next token</button>
+        <p class="microcopy">This also completes the previous consultation and updates the real average.</p>
+      </section>
+
+      <section class="panel settings-panel">
+        <div class="section-title compact">
+          <div>
+            <p class="eyebrow">Wait calculation</p>
+            <h2>Consultation time</h2>
+          </div>
+          <strong id="avg-label">7 min</strong>
+        </div>
+        <input id="avg-time" type="range" min="1" max="30" value="7" />
+        <p id="avg-source" class="microcopy">Using receptionist setting until enough real visits complete.</p>
+      </section>
+
+      <section class="panel queue-panel">
+        <div class="section-title compact">
+          <div>
+            <p class="eyebrow">Waiting list</p>
+            <h2><span id="queue-count">0</span> patients</h2>
+          </div>
+          <button id="reset-day" class="ghost-button" type="button">Reset day</button>
+        </div>
+        <ol id="queue-list" class="queue-list"></ol>
+      </section>
+    </main>
+  </body>
+</html>

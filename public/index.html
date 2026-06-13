@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clinic Queue</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body data-screen="home">
+    <main class="split-landing">
+      <section class="intro">
+        <p class="eyebrow">Live clinic queue</p>
+        <h1>Tokens without shouting.</h1>
+        <p>
+          A simple digital queue for neighbourhood clinics: receptionist control on one screen,
+          real-time patient visibility on the other.
+        </p>
+      </section>
+      <nav class="role-grid" aria-label="Choose screen">
+        <a class="role-card receptionist" href="/reception.html">
+          <span>Receptionist</span>
+          <strong>Add, call, and manage tokens</strong>
+        </a>
+        <a class="role-card patient" href="/waiting-room.html">
+          <span>Waiting room</span>
+          <strong>Live token status for patients</strong>
+        </a>
+      </nav>
+    </main>
+  </body>
+</html>
