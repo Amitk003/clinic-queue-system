@@ -38,3 +38,21 @@ For hackathon scope, this is acceptable because the problem statement asks for o
 - Doctor screen to mark consultation done without waiting for the next call.
 - Atomic MongoDB queue advancement for multiple reception desks.
 - SMS or WhatsApp notification when a patient has two tokens ahead.
+
+---
+
+## 🚀 Production Scaling Roadmap
+
+If this project were deployed to serve a multi-branch clinic chain with thousands of daily active users, we would scale the system as follows:
+
+1. **Frontend-Backend Decoupling**:
+   - Move the static assets inside `public` to a global CDN (e.g., Cloudflare Pages or Vercel).
+   - Host the Express API on a containerized environment (e.g., AWS ECS or GCP Cloud Run) pointing socket clients to `api.clinicflow.com`. This reduces load on the main application threads.
+
+2. **Horizontal Backend Scaling (Socket.IO Adapter)**:
+   - Sockets connections are in-memory. If we spin up multiple containers behind an ALB load balancer, we would introduce the `@socket.io/redis-adapter`.
+   - Redis acts as a pub/sub coordinator, ensuring that a state change on Server A is instantly broadcasted to clients connected on Server B and Server C.
+
+3. **Concurrency-Safe Queue Advancement**:
+   - Rewrite the `callNext` database transaction into a strict atomic operation using MongoDB `findOneAndUpdate` utilizing operations like `$pull` or a distributed lock (e.g., Redlock via Redis) to guarantee a token is only called once if multiple receptionists click the button simultaneously.
+

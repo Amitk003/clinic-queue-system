@@ -70,8 +70,11 @@ This keeps the estimate useful at opening time, then makes it increasingly data-
 | `POST` | `/api/average-time` | Update receptionist's average consultation time |
 | `POST` | `/api/reset` | Clear the day for demo/testing |
 
-## Submission Files
+## 📁 Submission & Evaluation Documents
 
-- `README.md` - setup, product explanation, and API notes
-- `docs/socket-event-diagram.md` - live sync event flow
-- `docs/thought-process.md` - concurrency, edge cases, and product decisions
+For hackathon reviewers, the complete entry includes the following core documents inside this repository:
+
+1. **[README.md](README.md)** (This document) - Installation instructions, functional explanation, and API specifications.
+2. **[docs/socket-event-diagram.md](docs/socket-event-diagram.md)** - Sequence diagram mapping out live WebSocket updates and Socket.IO connection flows between endpoints.
+3. **[docs/thought-process.md](docs/thought-process.md)** - **(Important for Criteria 4 Evaluation)**. Details product goals, edge cases handled, concurrency safety approaches, and a production horizontal scaling roadmap (Redis Pub/Sub, CDN separation, and atomic locks).
+
