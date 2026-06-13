@@ -3,29 +3,42 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Clinic Queue</title>
+    <title>Clinic Queue System</title>
     <link rel="stylesheet" href="/styles.css" />
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="/app.js" defer></script>
   </head>
   <body data-screen="home">
+    <header class="topbar">
+      <div class="brand">
+        ClinicFlow <span class="brand-dot"></span>
+      </div>
+      <div class="live-pill"><span></span> Live System</div>
+    </header>
+
     <main class="split-landing">
       <section class="intro">
-        <p class="eyebrow">Live clinic queue</p>
+        <p class="eyebrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Smart Clinic Queue
+        </p>
         <h1>Tokens without shouting.</h1>
         <p>
-          A simple digital queue for neighbourhood clinics: receptionist control on one screen,
-          real-time patient visibility on the other.
+          A real-time queue manager built for neighborhood clinics. Eliminate chaotic shouting and paper slips. 
+          Provide patients with instant wait-time estimates on their phones while maintaining effortless, mistake-proof control at the reception desk.
         </p>
       </section>
+
       <nav class="role-grid" aria-label="Choose screen">
         <a class="role-card receptionist" href="/reception.html">
-          <span>Receptionist</span>
-          <strong>Add, call, and manage tokens</strong>
+          <span>Reception Console</span>
+          <strong>Access Dashboard</strong>
+          <p>Register patients in under 10 seconds, manage active consultations, adjust configurations, and call next tokens instantly.</p>
         </a>
         <a class="role-card patient" href="/waiting-room.html">
-          <span>Waiting room</span>
-          <strong>Live token status for patients</strong>
+          <span>Waiting Room Screen</span>
+          <strong>Open Live Display</strong>
+          <p>High-contrast status board optimized for waiting room TVs and patient mobile phones. Features live tracking and precise estimates.</p>
         </a>
       </nav>
     </main>

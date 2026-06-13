@@ -10,33 +10,50 @@
   </head>
   <body data-screen="waiting">
     <header class="patient-header">
-      <a href="/" class="brand">Clinic Queue</a>
-      <div class="live-pill"><span></span> Updates live</div>
+      <a href="/" class="brand">
+        ClinicFlow <span class="brand-dot"></span>
+      </a>
+      <div class="live-pill"><span></span> Updates Live</div>
     </header>
 
     <main class="waiting-room">
+      <!-- Main Status View -->
       <section class="current-stage">
-        <p class="eyebrow">Doctor is seeing</p>
+        <p class="eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Currently Serving
+        </p>
         <div class="giant-token" id="current-token">--</div>
-        <h1 id="current-name">Clinic has not started calling tokens</h1>
+        <h1 id="current-name">Waiting for clinic to start consultations...</h1>
       </section>
 
-      <section class="patient-search">
-        <label for="token-search">Your token number</label>
-        <div class="search-row">
-          <input id="token-search" inputmode="numeric" placeholder="e.g. 12" />
-          <button id="clear-search" class="ghost-button" type="button">Clear</button>
-        </div>
-        <div id="my-status" class="my-status">Enter your token to see tokens ahead and wait time.</div>
-      </section>
+      <!-- Patient Search Board -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <section class="patient-search">
+          <p class="eyebrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Personal Status
+          </p>
+          <label for="token-search" style="margin-bottom: 0.2rem;">Track Your Wait Time</label>
+          <div class="search-row">
+            <input id="token-search" inputmode="numeric" placeholder="Enter Token No. (e.g. 12)" />
+            <button id="clear-search" class="ghost-button" type="button">Clear</button>
+          </div>
+          <div id="my-status" class="my-status">Enter your token number above to view positions ahead and precise wait time calculations.</div>
+        </section>
 
-      <section class="queue-strip">
-        <div class="strip-header">
-          <p class="eyebrow">Next tokens</p>
-          <strong><span id="queue-count">0</span> waiting</strong>
-        </div>
-        <ol id="queue-list" class="ticket-strip"></ol>
-      </section>
+        <!-- Ticket queue strip -->
+        <section class="queue-strip" style="margin: 0; flex: 1;">
+          <div class="strip-header">
+            <p class="eyebrow">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px;"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              Next in Line
+            </p>
+            <strong><span id="queue-count">0</span> Waiting</strong>
+          </div>
+          <ol id="queue-list" class="ticket-strip"></ol>
+        </section>
+      </div>
     </main>
   </body>
 </html>

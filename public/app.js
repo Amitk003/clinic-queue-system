@@ -25,6 +25,9 @@ function setupReception() {
     const startedAt = performance.now();
     const response = await postJson("/api/patients", payload);
     if (response.ok) {
+      $("#name").value = "";
+      $("#phone").value = "";
+      $("#concern").value = "";
       event.currentTarget.reset();
       $("#name").focus();
       const elapsed = ((performance.now() - startedAt) / 1000).toFixed(1);
